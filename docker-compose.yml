@@ -1,16 +1,16 @@
 ﻿version: "3.9"
 services:
-  mssql:
-    image: "mcr.microsoft.com/azure-sql-edge"
-    networks:
-      - sample-network
-    environment:
-      - "ACCEPT_EULA=Y"
-      - "SA_PASSWORD=Password12!"
-    ports:
-      - "1433:1433"
+  # mssql:
+  #   image: "mcr.microsoft.com/azure-sql-edge"
+  #   networks:
+  #     - sample-network
+  #   environment:
+  #     - "ACCEPT_EULA=Y"
+  #     - "SA_PASSWORD=Password12!"
+  #   ports:
+  #     - "1433:1433"
   postgres:
-    image: "postgres:14.7"
+    image: "postgres:16-alpine"
     networks:
       - sample-network
     environment:
@@ -18,7 +18,7 @@ services:
       - "POSTGRES_PASSWORD=Password12!"
       - "POSTGRES_DB=sample"
     ports:
-      - "5432:5432"
+      - "15432:5432"
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
       interval: 5s

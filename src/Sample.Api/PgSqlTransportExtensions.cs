@@ -23,6 +23,7 @@ public static class PgSqlTransportExtensions
         {
             options.Host = builder.Host ?? "localhost";
             options.Database = builder.Database ?? "sample";
+            options.Port = builder.Port;
             options.Schema = "transport";
             options.Role = "transport";
             options.Username = "masstransit";
